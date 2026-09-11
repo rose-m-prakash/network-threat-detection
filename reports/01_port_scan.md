@@ -53,6 +53,22 @@ the target — a classic pre-attack reconnaissance technique.
 |---|---|---|
 | 10.100.25.14 | IP | Source of SYN port scan |
 | 10.100.18.12 | IP | Scan target |
+## Incident Timeline
+
+| Time | Event | Attacker/Source IP | Victim/Target IP |
+|---|---|---|---|
+| T+0.000s | SYN sent to port 139 | 10.100.25.14 | 10.100.18.12 |
+| T+0.100s | SYN sent to port 135 | 10.100.25.14 | 10.100.18.12 |
+| T+0.201s | SYN sent to port 445 | 10.100.25.14 | 10.100.18.12 |
+| T+0.302s | SYN sent to port 80 | 10.100.25.14 | 10.100.18.12 |
+| T+0.403s | SYN sent to port 22 | 10.100.25.14 | 10.100.18.12 |
+| T+0.808s | SYN sent to port 6000 | 10.100.25.14 | 10.100.18.12 |
+| T+1.111s | Scan continues across remaining ports (23, 21, 25, 111, 515, 1025...) | 10.100.25.14 | 10.100.18.12 |
+
+**Sequence summary:** Single source systematically probes 12+ distinct
+ports on one target within ~1 second, each a lone SYN with no completed
+handshake — consistent with an automated reconnaissance sweep (e.g. Nmap
+default SYN scan) preceding a potential follow-on attack.
 
 ## Mitigation Recommendations
 - Rate-limit or alert on excessive SYN packets from a single source in a short window

@@ -1,4 +1,10 @@
 # VAPT: Reconnaissance & Vulnerability Assessment
+**Note on target selection:** The brief's suggested deployment (DVWA/OWASP
+Juice Shop via Docker) could not be used locally, as this machine has
+hardware virtualization disabled in BIOS, which Docker Desktop requires.
+As a substitute, authorized public test targets purpose-built for security
+scanning practice (scanme.nmap.org, php.testinvicti.com) were used instead
+— both explicitly permit unauthenticated scanning for educational use.
 
 ## Part 1: Nmap Service/Version Scan
 
